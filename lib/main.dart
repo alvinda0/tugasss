@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.white,
             leading: Icon(
-              Icons.menu,
+              Icons.arrow_back_ios_new,
               color: Colors.red,
             ),
             actions: [
               Icon(
-                Icons.stacked_bar_chart_outlined,
+                Icons.more_vert_sharp,
                 color: Colors.red,
               ),
             ],
@@ -104,13 +104,17 @@ class MyApp extends StatelessWidget {
                             ),
                             Text('Basics'),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 10,
+                                  width: 80,
+                                  margin: EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.circular(15)),
+                                ),
+                              ],
                             )
                           ],
                         ),
