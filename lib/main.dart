@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,17 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.white,
-            leading: Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.red,
-            ),
+            title: Text('Course'),
+            centerTitle: true,
+            leading: Icon(Icons.arrow_back_ios),
             actions: [
-              Icon(
-                Icons.more_vert_sharp,
-                color: Colors.red,
-              ),
+              Icon(Icons.more_vert),
             ],
+            backgroundColor: Colors.orange,
+            elevation: 0,
           ),
           body: Stack(
             children: <Widget>[
@@ -83,9 +82,24 @@ class MyApp extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Icon(
-                            Icons.adobe_outlined,
-                            size: 100,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: CircularPercentIndicator(
+                              radius: 55,
+                              lineWidth: 4,
+                              backgroundWidth: 2,
+                              percent: 0.4,
+                              backgroundColor: Colors.white,
+                              progressColor: Colors.red,
+                              center: Text(
+                                '43 %',
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
                           ),
                         ]),
                   ),
@@ -97,25 +111,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/888/888071.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
-                            Text('4/5'),
-                            Row(
-                              children: [
-                                Container(
-                                  height: 10,
-                                  width: 80,
-                                  margin: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      color: Colors.blue,
-                                      borderRadius: BorderRadius.circular(15)),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Basics',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
                                 ),
-                              ],
-                            )
+                              ),
+                            ),
+                            Text('4/5'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -123,21 +168,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/4818/4818253.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Occupations',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
-                            )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -145,21 +225,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/3601/3601571.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Conversation',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
-                            )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -167,21 +282,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/2875/2875433.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Places',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
-                            )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -189,21 +339,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/2636/2636269.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Family Members',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
-                            )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -211,21 +396,56 @@ class MyApp extends StatelessWidget {
                         margin: const EdgeInsets.all(40),
                         child: Column(
                           children: <Widget>[
-                            CircleAvatar(
-                              radius: 32,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/originals/78/07/03/78070395106fcd1c3e66e3b3810568bb.jpg'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 15.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade600,
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                            offset: Offset(3, 4),
+                                          ),
+                                        ]),
+                                    child: Image.network(
+                                      'https://cdn-icons-png.flaticon.com/512/3137/3137066.png',
+                                      scale: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text('Basics'),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(
+                                'Foods',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             Text('4/5'),
-                            Container(
-                              height: 10,
-                              width: 120,
-                              margin: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(15)),
-                            )
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: LinearPercentIndicator(
+                                backgroundColor: Colors.grey.shade300,
+                                progressColor: Colors.yellow,
+                                percent: 0.8,
+                                lineHeight: 5,
+                                barRadius: Radius.circular(18),
+                                linearStrokeCap: LinearStrokeCap.round,
+                              ),
+                            ),
                           ],
                         ),
                       ),
